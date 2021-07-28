@@ -5,15 +5,15 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.UserRoute = void 0;
 
-var _decorators = require("@sapphire/decorators");
-
 var _pluginApi = require("@sapphire/plugin-api");
 
-var _dec, _class;
+class UserRoute extends _pluginApi.Route {
+  constructor(context, options) {
+    super(context, { ...options,
+      route: 'hello-world'
+    });
+  }
 
-let UserRoute = (_dec = (0, _decorators.ApplyOptions)({
-  route: 'hello-world'
-}), _dec(_class = class UserRoute extends _pluginApi.Route {
   [_pluginApi.methods.GET](_request, response) {
     response.json({
       message: 'Hello World'
@@ -26,5 +26,6 @@ let UserRoute = (_dec = (0, _decorators.ApplyOptions)({
     });
   }
 
-}) || _class);
+}
+
 exports.UserRoute = UserRoute;

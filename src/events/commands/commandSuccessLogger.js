@@ -5,17 +5,17 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.UserEvent = void 0;
 
-var _decorators = require("@sapphire/decorators");
-
 var _framework = require("@sapphire/framework");
 
 var _colorette = require("colorette");
 
-var _dec, _class;
+class UserEvent extends _framework.Event {
+  constructor(context, options) {
+    super(context, { ...options,
+      event: _framework.Events.CommandSuccess
+    });
+  }
 
-let UserEvent = (_dec = (0, _decorators.ApplyOptions)({
-  event: _framework.Events.CommandSuccess
-}), _dec(_class = class UserEvent extends _framework.Event {
   run({
     message,
     command
@@ -54,5 +54,6 @@ let UserEvent = (_dec = (0, _decorators.ApplyOptions)({
     return `${guild.name}[${(0, _colorette.cyan)(guild.id)}]`;
   }
 
-}) || _class);
+}
+
 exports.UserEvent = UserEvent;

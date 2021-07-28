@@ -3,9 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
-
-var _decorators = require("@sapphire/decorators");
+exports.UserCommand = void 0;
 
 var _framework = require("@sapphire/framework");
 
@@ -15,18 +13,20 @@ var _utilities = require("@sapphire/utilities");
 
 var _util = require("util");
 
-var _dec, _class2;
-
-let _class = (_dec = (0, _decorators.ApplyOptions)({
-  aliases: ['ev'],
-  description: 'Evals any JavaScript code',
-  quotes: [],
-  preconditions: ['OwnerOnly'],
-  strategyOptions: {
-    flags: ['async', 'hidden', 'showHidden', 'silent', 's'],
-    options: ['depth']
+class UserCommand extends _framework.Command {
+  constructor(context, options) {
+    super(context, { ...options,
+      aliases: ['ev'],
+      description: 'Evals any JavaScript code',
+      quotes: [],
+      preconditions: ['OwnerOnly'],
+      strategyOptions: {
+        flags: ['async', 'hidden', 'showHidden', 'silent', 's'],
+        options: ['depth']
+      }
+    });
   }
-}), _dec(_class2 = class extends _framework.Command {
+
   async run(message, args) {
     const code = await args.rest('string');
     const {
@@ -91,6 +91,6 @@ let _class = (_dec = (0, _decorators.ApplyOptions)({
     };
   }
 
-}) || _class2);
+}
 
-exports.default = _class;
+exports.UserCommand = UserCommand;

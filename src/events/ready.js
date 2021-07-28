@@ -5,22 +5,19 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.UserEvent = void 0;
 
-var _decorators = require("@sapphire/decorators");
-
 var _framework = require("@sapphire/framework");
 
 var _colorette = require("colorette");
 
-var _dec, _class;
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 const dev = process.env.NODE_ENV !== 'production';
-let UserEvent = (_dec = (0, _decorators.ApplyOptions)({
-  once: true
-}), _dec(_class = class UserEvent extends _framework.Event {
-  constructor(...args) {
-    super(...args);
+
+class UserEvent extends _framework.Event {
+  constructor(context, options) {
+    super(context, { ...options,
+      once: true
+    });
 
     _defineProperty(this, "style", dev ? _colorette.yellow : _colorette.blue);
   }
@@ -63,5 +60,6 @@ ${line03}${dev ? ` ${pad}${blc('<')}${llc('/')}${blc('>')} ${llc('DEVELOPMENT MO
     return (0, _colorette.gray)(`${last ? '└─' : '├─'} Loaded ${this.style(store.size.toString().padEnd(3, ' '))} ${store.name}.`);
   }
 
-}) || _class);
+}
+
 exports.UserEvent = UserEvent;
