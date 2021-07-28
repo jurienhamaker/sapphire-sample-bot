@@ -1,5 +1,13 @@
-import { Event } from '@sapphire/framework';
-export class UserEvent extends Event {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.UserEvent = void 0;
+
+var _framework = require("@sapphire/framework");
+
+class UserEvent extends _framework.Event {
   async run({
     context,
     message: content
@@ -18,3 +26,5 @@ export class UserEvent extends Event {
   }
 
 }
+
+exports.UserEvent = UserEvent;

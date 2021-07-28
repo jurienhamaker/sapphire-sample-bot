@@ -1,13 +1,22 @@
-import { MessageEmbed } from 'discord.js';
-import { RandomLoadingMessage } from './constants';
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.pickRandom = pickRandom;
+exports.sendLoadingMessage = sendLoadingMessage;
+
+var _discord = require("discord.js");
+
+var _constants = require("./constants");
+
 /**
  * Picks a random item from an array
  * @param array The array to pick a random item from
  * @example
  * const randomEntry = pickRandom([1, 2, 3, 4]) // 1
  */
-
-export function pickRandom(array) {
+function pickRandom(array) {
   const {
     length
   } = array;
@@ -18,6 +27,7 @@ export function pickRandom(array) {
  * @param message The message data for which to send the loading message
  */
 
-export function sendLoadingMessage(message) {
-  return message.send(new MessageEmbed().setDescription(pickRandom(RandomLoadingMessage)).setColor('#FF0000'));
+
+function sendLoadingMessage(message) {
+  return message.send(new _discord.MessageEmbed().setDescription(pickRandom(_constants.RandomLoadingMessage)).setColor('#FF0000'));
 }

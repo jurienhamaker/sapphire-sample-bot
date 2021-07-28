@@ -1,11 +1,15 @@
-import './lib/setup';
-import { LogLevel, SapphireClient } from '@sapphire/framework';
-const client = new SapphireClient({
+"use strict";
+
+require("./lib/setup");
+
+var _framework = require("@sapphire/framework");
+
+const client = new _framework.SapphireClient({
   defaultPrefix: 'dr!',
   regexPrefix: /^(hey +)?dragon[,! ]/i,
   caseInsensitiveCommands: true,
   logger: {
-    level: LogLevel.Trace
+    level: _framework.LogLevel.Trace
   },
   shards: 'auto',
   ws: {

@@ -1,20 +1,30 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.UserRoute = void 0;
+
+var _decorators = require("@sapphire/decorators");
+
+var _pluginApi = require("@sapphire/plugin-api");
+
 var _dec, _class;
 
-import { ApplyOptions } from '@sapphire/decorators';
-import { methods, Route } from '@sapphire/plugin-api';
-export let UserRoute = (_dec = ApplyOptions({
+let UserRoute = (_dec = (0, _decorators.ApplyOptions)({
   route: 'hello-world'
-}), _dec(_class = class UserRoute extends Route {
-  [methods.GET](_request, response) {
+}), _dec(_class = class UserRoute extends _pluginApi.Route {
+  [_pluginApi.methods.GET](_request, response) {
     response.json({
       message: 'Hello World'
     });
   }
 
-  [methods.POST](_request, response) {
+  [_pluginApi.methods.POST](_request, response) {
     response.json({
       message: 'Hello World'
     });
   }
 
 }) || _class);
+exports.UserRoute = UserRoute;

@@ -28,6 +28,7 @@
 		"@babel/core": "^7.14.8",
 		"@babel/plugin-proposal-class-properties": "^7.14.5",
 		"@babel/plugin-proposal-decorators": "^7.14.5",
+		"@babel/preset-env": "^7.14.8",
 		"@babel/preset-typescript": "^7.14.5",
 		"@sapphire/prettier-config": "^1.1.6",
 		"@sapphire/ts-config": "^3.0.0",

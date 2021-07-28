@@ -1,18 +1,28 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.UserEvent = void 0;
+
+var _decorators = require("@sapphire/decorators");
+
+var _framework = require("@sapphire/framework");
+
+var _colorette = require("colorette");
+
 var _dec, _class;
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-import { ApplyOptions } from '@sapphire/decorators';
-import { Event } from '@sapphire/framework';
-import { blue, gray, green, magenta, magentaBright, white, yellow } from 'colorette';
 const dev = process.env.NODE_ENV !== 'production';
-export let UserEvent = (_dec = ApplyOptions({
+let UserEvent = (_dec = (0, _decorators.ApplyOptions)({
   once: true
-}), _dec(_class = class UserEvent extends Event {
+}), _dec(_class = class UserEvent extends _framework.Event {
   constructor(...args) {
     super(...args);
 
-    _defineProperty(this, "style", dev ? yellow : blue);
+    _defineProperty(this, "style", dev ? _colorette.yellow : _colorette.blue);
   }
 
   run() {
@@ -21,9 +31,9 @@ export let UserEvent = (_dec = ApplyOptions({
   }
 
   printBanner() {
-    const success = green('+');
-    const llc = dev ? magentaBright : white;
-    const blc = dev ? magenta : blue;
+    const success = (0, _colorette.green)('+');
+    const llc = dev ? _colorette.magentaBright : _colorette.white;
+    const blc = dev ? _colorette.magenta : _colorette.blue;
     const line01 = llc('');
     const line02 = llc('');
     const line03 = llc(''); // Offset Pad
@@ -50,7 +60,8 @@ ${line03}${dev ? ` ${pad}${blc('<')}${llc('/')}${blc('>')} ${llc('DEVELOPMENT MO
   }
 
   styleStore(store, last) {
-    return gray(`${last ? '└─' : '├─'} Loaded ${this.style(store.size.toString().padEnd(3, ' '))} ${store.name}.`);
+    return (0, _colorette.gray)(`${last ? '└─' : '├─'} Loaded ${this.style(store.size.toString().padEnd(3, ' '))} ${store.name}.`);
   }
 
 }) || _class);
+exports.UserEvent = UserEvent;

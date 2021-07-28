@@ -1,12 +1,23 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _decorators = require("@sapphire/decorators");
+
+var _framework = require("@sapphire/framework");
+
+var _type = require("@sapphire/type");
+
+var _utilities = require("@sapphire/utilities");
+
+var _util = require("util");
+
 var _dec, _class2;
 
-import { ApplyOptions } from '@sapphire/decorators';
-import { Command } from '@sapphire/framework';
-import { Type } from '@sapphire/type';
-import { codeBlock, isThenable } from '@sapphire/utilities';
-import { inspect } from 'util';
-
-let _class = (_dec = ApplyOptions({
+let _class = (_dec = (0, _decorators.ApplyOptions)({
   aliases: ['ev'],
   description: 'Evals any JavaScript code',
   quotes: [],
@@ -15,7 +26,7 @@ let _class = (_dec = ApplyOptions({
     flags: ['async', 'hidden', 'showHidden', 'silent', 's'],
     options: ['depth']
   }
-}), _dec(_class2 = class extends Command {
+}), _dec(_class2 = class extends _framework.Command {
   async run(message, args) {
     const code = await args.rest('string');
     const {
@@ -27,9 +38,9 @@ let _class = (_dec = ApplyOptions({
       depth: Number(args.getOption('depth')) ?? 0,
       showHidden: args.getFlags('hidden', 'showHidden')
     });
-    const output = success ? codeBlock('js', result) : `**ERROR**: ${codeBlock('bash', result)}`;
+    const output = success ? (0, _utilities.codeBlock)('js', result) : `**ERROR**: ${(0, _utilities.codeBlock)('bash', result)}`;
     if (args.getFlags('silent', 's')) return null;
-    const typeFooter = `**Type**: ${codeBlock('typescript', type)}`;
+    const typeFooter = `**Type**: ${(0, _utilities.codeBlock)('typescript', type)}`;
 
     if (output.length > 2000) {
       return message.channel.send(`Output was too long... sent the result as a file.\n\n${typeFooter}`, {
@@ -63,11 +74,11 @@ let _class = (_dec = ApplyOptions({
       success = false;
     }
 
-    const type = new Type(result).toString();
-    if (isThenable(result)) result = await result;
+    const type = new _type.Type(result).toString();
+    if ((0, _utilities.isThenable)(result)) result = await result;
 
     if (typeof result !== 'string') {
-      result = inspect(result, {
+      result = (0, _util.inspect)(result, {
         depth: flags.depth,
         showHidden: flags.showHidden
       });
@@ -82,4 +93,4 @@ let _class = (_dec = ApplyOptions({
 
 }) || _class2);
 
-export { _class as default };
+exports.default = _class;
