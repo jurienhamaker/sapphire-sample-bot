@@ -1,7 +1,7 @@
 {
 	"name": "sapphire-sample-bot",
 	"version": "1.0.0",
-	"main": "dist/sample-bot.js",
+	"main": "src/sample-bot.js",
 	"author": "Jeroen Claassens",
 	"license": "MIT",
 	"dependencies": {
@@ -24,11 +24,17 @@
 		"reflect-metadata": "^0.1.13"
 	},
 	"devDependencies": {
+		"@babel/cli": "^7.14.8",
+		"@babel/core": "^7.14.8",
+		"@babel/plugin-proposal-class-properties": "^7.14.5",
+		"@babel/plugin-proposal-decorators": "^7.14.5",
+		"@babel/preset-typescript": "^7.14.5",
 		"@sapphire/prettier-config": "^1.1.6",
 		"@sapphire/ts-config": "^3.0.0",
 		"@types/node": "^16.4.0",
 		"@types/node-fetch": "^2.5.11",
 		"@types/ws": "^7.4.7",
+		"babel-plugin-const-enum": "^1.1.0",
 		"discord-api-types": "^0.20.1",
 		"npm-run-all": "^4.1.5",
 		"prettier": "^2.3.2",
@@ -37,7 +43,7 @@
 	"scripts": {
 		"build": "tsc",
 		"watch": "tsc -w",
-		"start": "node dist/sample-bot.js",
+		"start": "node src/sample-bot.js",
 		"dev": "run-s build start",
 		"format": "prettier --write \"src/**/*.ts\""
 	},
