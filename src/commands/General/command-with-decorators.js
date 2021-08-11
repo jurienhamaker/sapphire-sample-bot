@@ -25,7 +25,7 @@ let UserCommand = (_dec = (0, _decorators.ApplyOptions)({
     input: 'show',
     default: true
   }]
-}), _dec2 = (0, _decorators.RequiresPermissions)('EMBED_LINKS'), _dec3 = (0, _decorators.RequiresGuildContext)(message => message.channel.send('This sub-command can only be used in servers')), _dec4 = (0, _decorators.RequiresDMContext)(message => message.channel.send('This sub-command can only be used in DMs')), _dec(_class = (_class2 = class UserCommand extends _pluginSubcommands.SubCommandPluginCommand {
+}), _dec2 = (0, _decorators.RequiresClientPermissions)('EMBED_LINKS'), _dec3 = (0, _decorators.RequiresGuildContext)(message => message.channel.send('This sub-command can only be used in servers')), _dec4 = (0, _decorators.RequiresDMContext)(message => message.channel.send('This sub-command can only be used in DMs')), _dec(_class = (_class2 = class UserCommand extends _pluginSubcommands.SubCommandPluginCommand {
   // Anyone should be able to view the result, but not modify
   async show(message) {
     return message.channel.send('Showing!');
@@ -35,7 +35,7 @@ let UserCommand = (_dec = (0, _decorators.ApplyOptions)({
     const embed = new _discord.MessageEmbed() //
     .setColor('#3986E4').setDescription('Added!').setTitle('Configuration Log').setTimestamp();
     return message.channel.send({
-      embed
+      embeds: [embed]
     });
   }
 

@@ -20,10 +20,8 @@ class UserCommand extends _framework.Command {
       description: 'Evals any JavaScript code',
       quotes: [],
       preconditions: ['OwnerOnly'],
-      strategyOptions: {
-        flags: ['async', 'hidden', 'showHidden', 'silent', 's'],
-        options: ['depth']
-      }
+      flags: ['async', 'hidden', 'showHidden', 'silent', 's'],
+      options: ['depth']
     });
   }
 
@@ -43,7 +41,8 @@ class UserCommand extends _framework.Command {
     const typeFooter = `**Type**: ${(0, _utilities.codeBlock)('typescript', type)}`;
 
     if (output.length > 2000) {
-      return message.channel.send(`Output was too long... sent the result as a file.\n\n${typeFooter}`, {
+      return message.channel.send({
+        content: `Output was too long... sent the result as a file.\n\n${typeFooter}`,
         files: [{
           attachment: Buffer.from(output),
           name: 'output.txt'
@@ -67,7 +66,7 @@ class UserCommand extends _framework.Command {
       result = eval(code);
     } catch (error) {
       if (error && error.stack) {
-        this.context.client.logger.error(error);
+        this.container.client.logger.error(error);
       }
 
       result = error;

@@ -16,7 +16,7 @@ class UserCommand extends _framework.Command {
 
   async run(message) {
     const msg = await message.channel.send('Ping?');
-    return msg.edit(`Pong! Bot Latency ${Math.round(this.context.client.ws.ping)}ms. API Latency ${msg.createdTimestamp - message.createdTimestamp}ms.`);
+    return msg.edit(`Pong! Bot Latency ${Math.round(this.container.client.ws.ping)}ms. API Latency ${msg.createdTimestamp - message.createdTimestamp}ms.`);
   }
 
 }

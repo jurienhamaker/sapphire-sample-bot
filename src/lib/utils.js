@@ -6,6 +6,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.pickRandom = pickRandom;
 exports.sendLoadingMessage = sendLoadingMessage;
 
+var _editableCommands = require("@skyra/editable-commands");
+
 var _discord = require("discord.js");
 
 var _constants = require("./constants");
@@ -29,5 +31,7 @@ function pickRandom(array) {
 
 
 function sendLoadingMessage(message) {
-  return message.send(new _discord.MessageEmbed().setDescription(pickRandom(_constants.RandomLoadingMessage)).setColor('#FF0000'));
+  return (0, _editableCommands.send)(message, {
+    embeds: [new _discord.MessageEmbed().setDescription(pickRandom(_constants.RandomLoadingMessage)).setColor('#FF0000')]
+  });
 }

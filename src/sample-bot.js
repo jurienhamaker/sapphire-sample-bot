@@ -9,12 +9,10 @@ const client = new _framework.SapphireClient({
   regexPrefix: /^(hey +)?dragon[,! ]/i,
   caseInsensitiveCommands: true,
   logger: {
-    level: _framework.LogLevel.Trace
+    level: _framework.LogLevel.Debug
   },
   shards: 'auto',
-  ws: {
-    intents: ['GUILDS', 'GUILD_MEMBERS', 'GUILD_BANS', 'GUILD_EMOJIS', 'GUILD_VOICE_STATES', 'GUILD_MESSAGES', 'GUILD_MESSAGE_REACTIONS', 'DIRECT_MESSAGES', 'DIRECT_MESSAGE_REACTIONS']
-  }
+  intents: ['GUILDS', 'GUILD_MEMBERS', 'GUILD_BANS', 'GUILD_EMOJIS_AND_STICKERS', 'GUILD_VOICE_STATES', 'GUILD_MESSAGES', 'GUILD_MESSAGE_REACTIONS', 'DIRECT_MESSAGES', 'DIRECT_MESSAGE_REACTIONS']
 });
 
 const main = async () => {

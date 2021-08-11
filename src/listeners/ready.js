@@ -13,7 +13,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 const dev = process.env.NODE_ENV !== 'production';
 
-class UserEvent extends _framework.Event {
+class UserEvent extends _framework.Listener {
   constructor(context, options) {
     super(context, { ...options,
       once: true
@@ -47,7 +47,7 @@ ${line03}${dev ? ` ${pad}${blc('<')}${llc('/')}${blc('>')} ${llc('DEVELOPMENT MO
     const {
       client,
       logger
-    } = this.context;
+    } = this.container;
     const stores = [...client.stores.values()];
     const last = stores.pop();
 

@@ -9,7 +9,7 @@ var _framework = require("@sapphire/framework");
 
 var _colorette = require("colorette");
 
-class UserEvent extends _framework.Event {
+class UserEvent extends _framework.Listener {
   constructor(context, options) {
     super(context, { ...options,
       event: _framework.Events.CommandSuccess
@@ -22,15 +22,15 @@ class UserEvent extends _framework.Event {
   }) {
     var _message$guild;
 
-    const shard = this.shard(((_message$guild = message.guild) === null || _message$guild === void 0 ? void 0 : _message$guild.shardID) ?? 0);
+    const shard = this.shard(((_message$guild = message.guild) === null || _message$guild === void 0 ? void 0 : _message$guild.shardId) ?? 0);
     const commandName = this.command(command);
     const author = this.author(message.author);
     const sentAt = message.guild ? this.guild(message.guild) : this.direct();
-    this.context.logger.debug(`${shard} - ${commandName} ${author} ${sentAt}`);
+    this.container.logger.debug(`${shard} - ${commandName} ${author} ${sentAt}`);
   }
 
   onLoad() {
-    this.enabled = this.context.logger.level <= _framework.LogLevel.Debug;
+    this.enabled = this.container.logger.level <= _framework.LogLevel.Debug;
     return super.onLoad();
   }
 

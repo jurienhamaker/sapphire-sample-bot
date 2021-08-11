@@ -30,7 +30,7 @@ class UserCommand extends _framework.Command {
     });
     paginatedMessage.addPageEmbed(embed => embed //
     .setDescription('This is the first page').setTitle('Page 1')).addPageBuilder(builder => builder //
-    .setContent('This is the second page').setEmbed(new _discord2.MessageEmbed().setTimestamp()));
+    .setContent('This is the second page').setEmbeds([new _discord2.MessageEmbed().setTimestamp()]));
     await paginatedMessage.run(response, message.author);
     return response;
   }
